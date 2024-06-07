@@ -1,27 +1,57 @@
-const Table = () => {
+import React from "react";
+import Button from "../Button";
+
+interface Column {
+  header: string;
+  accessor: string;
+}
+
+interface Action {
+  label: string;
+  icon: React.ReactNode;
+  onClick: (row: any) => void;
+}
+
+interface Props {
+  rows: any[];
+  columns: Column[];
+  actions?: Action[];
+}
+
+const Table = ({ rows, columns, actions }: Props) => {
   return (
     <table className="shadow-lg bg-white border-collapse">
       <thead>
         <tr>
-          <th className="bg-blue-100 border text-left px-8 py-4">Id</th>
-          <th className="bg-blue-100 border text-left px-8 py-4">Nome</th>
-          <th className="bg-blue-100 border text-left px-8 py-4">
-            Data Início
-          </th>
-          <th className="bg-blue-100 border text-left px-8 py-4">Data Fim</th>
-          <th className="bg-blue-100 border text-left px-8 py-4">Status</th>
-          <th className="bg-blue-100 border text-left px-8 py-4">Ações</th>
+          {columns.map((column, index) => (
+            <th key={index} className="bg-blue-100 border text-left px-8 py-4">
+              {column.header}
+            </th>
+          ))}
+          {actions && actions.length > 0 && (
+            <th className="bg-blue-100 border text-center px-8 py-4">Ações</th>
+          )}
         </tr>
       </thead>
       <tbody>
-        <tr className="hover:bg-gray-50">
-          <td className="border px-8 py-4">01</td>
-          <td className="border px-8 py-4">Test</td>
-          <td className="border px-8 py-4">13/11/2024</td>
-          <td className="border px-8 py-4">13/11/2025</td>
-          <td className="border px-8 py-4">Ativa</td>
-          <td className="border px-8 py-4"></td>
-        </tr>
+        {rows.map((row) => (
+          <tr className="hover:bg-gray-50" key={row.id}>
+            {columns.map((column, index) => (
+              <td key={index} className="border px-8 py-4">
+                {row[column.accessor]}
+              </td>
+            ))}
+            {actions && actions.length > 0 && (
+              <td className="border px-8 py-4 text-center">
+                {actions.map((action, index) => (
+                  <Button key={index} onClick={() => action.onClick(row)}>
+                    {action.icon}
+                  </Button>
+                ))}
+              </td>
+            )}
+          </tr>
+        ))}
       </tbody>
     </table>
   );

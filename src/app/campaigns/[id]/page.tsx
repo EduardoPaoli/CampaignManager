@@ -1,17 +1,39 @@
 "use client";
-import { postCampaign } from "@/app/api/campaign";
-import { STATUS_CAMPAIGN } from "@/common/contants";
+import { useEffect, useState } from "react";
+import { getCampaignById, updateCampaign } from "@/app/api/campaign";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
 import Select from "@/components/Select";
-import { ICampaign } from "@/interfaces/ICampaign";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useParams } from "next/navigation";
+import { STATUS_CAMPAIGN } from "@/common/contants";
+import { ICampaign } from "@/interfaces/ICampaign";
 
-const NewCampaign = () => {
+const UpdateCampaign = () => {
+  const [campaign, setCampaign] = useState<ICampaign>();
   const { register, handleSubmit, reset } = useForm<ICampaign>();
+  const params = useParams();
+  const { id } = params;
+
+  useEffect(() => {
+    const fetchCampaigns = async () => {
+      try {
+        const currentCampaign = await getCampaignById(id);
+        setCampaign(currentCampaign);
+      } catch (error) {
+        console.error("Error fetching campaigns:", error);
+      }
+    };
+
+    fetchCampaigns();
+  }, []);
+
+  useEffect(() => {
+    reset(campaign);
+  }, [campaign]);
+
   const onSubmit: SubmitHandler<ICampaign> = async (data) => {
-    await postCampaign(data);
-    reset();
+    await updateCampaign(data, id);
   };
 
   return (
@@ -22,32 +44,28 @@ const NewCampaign = () => {
           type="text"
           name="name"
           register={register}
-          isRequired
         />
         <Select
           label="Status"
           name="status"
           register={register}
           options={STATUS_CAMPAIGN}
-          isRequired
         />
         <Input
           label="Data Início"
           type="date"
           name="startDate"
           register={register}
-          isRequired
         />
         <Input
           label="Data Fim"
           type="date"
           name="endDate"
           register={register}
-          isRequired
         />
 
         <Button
-          label="Salvar"
+          label="Atualizar"
           className="mt-5 py-2 px-3 bg-indigo-500 text-white text-sm font-semibold rounded-md shadow focus:outline-none"
         />
       </form>
@@ -55,4 +73,4 @@ const NewCampaign = () => {
   );
 };
 
-export default NewCampaign;
+export default UpdateCampaign;

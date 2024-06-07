@@ -1,25 +1,12 @@
 {
-    "campaigns": [
-      {
-        "id": "2a3ae520-b6ef-4f73-a5c5-60f55b09f0e2",
-        "name": "Crefisa",
-        "status": "Ativa",
-        "startDate": "2024-06-06",
-        "endDate": "2024-06-13"
-      },
-      {
-        "id": "2bdf9812-3707-4f32-b8e0-d7a1d3b7459b",
-        "name": "MVR",
-        "status": "Expirada",
-        "startDate": "2024-05-06",
-        "endDate": "2024-05-13"
-      },
-      {
-        "id": "91b02ebf-f914-413f-b8cd-ef672bafaa23",
-        "name": "Gol",
-        "status": "Expirada",
-        "startDate": "2024-05-06",
-        "endDate": "2024-05-13"
-      }
-    ]
-  }
+  "campaigns": [
+    {
+      "id": "4e04961a-9069-49e3-bf1e-c40f672ccad1",
+      "createdAt": "2024-06-07T18:20:36.450Z",
+      "name": "BH Festival",
+      "status": "Ativa",
+      "startDate": "2024-06-07",
+      "endDate": "2024-06-08"
+    }
+  ]
+}

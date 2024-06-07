@@ -5,16 +5,20 @@ interface Props {
   name: string;
   register: UseFormRegister<any>;
   options: string[];
+  isRequired?: boolean
 }
 
-const Select = ({ label, name, register, options }: Props) => {
+const Select = ({ label, name, register, options, isRequired }: Props) => {
   return (
     <label className="relative block">
       <span className="mb-2">{label}</span>
 
       <select
-      className="block bg-white w-full border border-slate-300 rounded-md py-2 px-3 my-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
-       {...register(name)}>
+        className="block bg-white w-full border border-slate-300 rounded-md py-2 px-3 my-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+        {...register(name)}
+        required={isRequired}
+      >
+        <option value="">Selecione uma opção</option>
         {options.map((option, index) => (
           <option key={index} value={option}>
             {option}
