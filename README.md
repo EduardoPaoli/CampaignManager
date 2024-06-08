@@ -22,19 +22,6 @@ yarn dev
 ```
 A aplicação estará disponível em `http://localhost:3000`
 
-## Build para Produção
-Para construir a aplicação para produção:
-```bash
-npm run build
-# ou
-yarn build
-```
-Para iniciar a aplicação em modo de produção:
-```bash
-npm start
-# ou
-yarn start
-```
 ## Servidor JSON
 Para iniciar o servidor JSON:
 ```bash
@@ -49,6 +36,20 @@ O servidor JSON estará disponível em `http://localhost:3001`
 npm test
 # ou
 yarn test
+```
+
+## Build para Produção
+Para construir a aplicação para produção:
+```bash
+npm run build
+# ou
+yarn build
+```
+Para iniciar a aplicação em modo de produção:
+```bash
+npm start
+# ou
+yarn start
 ```
 
 ## Estrutura do Projeto
