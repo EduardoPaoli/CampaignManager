@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
+import Header from "@/components/Header";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Campaign Manager",
@@ -16,11 +17,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Toaster position="top-center" toastOptions={{
+      <body>
+        <Toaster
+          position="top-center"
+          toastOptions={{
             duration: 5000,
-        }} />
-        {children}
+          }}
+        />
+        <section>
+          <Header siteName="CManager" />
+          <main className="flex min-h-screen flex-col items-center justify-between p-24">
+            {children}
+          </main>
+        </section>
       </body>
     </html>
   );

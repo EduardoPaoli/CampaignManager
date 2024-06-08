@@ -7,7 +7,3 @@ export const formatDateAndTime = (date?: string): string => {
 export const formatDate = (date?: string, format = "DD/MM/YYYY"): string => {
   return dayjs(date).format(format);
 };
-
-export const formatToUnixTimestamp = (date?: string) => {
-  dayjs(date).unix()
-}

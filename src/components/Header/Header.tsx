@@ -1,12 +1,11 @@
 "use client";
-
 import { RollbackOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const Header = ({ siteName }: { siteName: string }) => {
   const pathname = usePathname();
-  const showBackButton = pathname !== "/campaigns";
+  const showBackButton = pathname !== "/";
 
   return (
     <header className="flex justify-between bg-slate-100 py-5 px-8 min-h-16">
@@ -23,7 +22,7 @@ const Header = ({ siteName }: { siteName: string }) => {
       ) : (
         <>
           <Link
-            href="/campaigns"
+            href="/"
             className="py-2 px-3 bg-indigo-500 text-white text-center text-sm font-semibold rounded-md shadow"
           >
             <RollbackOutlined />
