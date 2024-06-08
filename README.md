@@ -7,29 +7,20 @@ Esta aplicação permite o gerenciamento de campanhas, oferecendo funcionalidade
 - Node.js (versão 18 ou superior)
 - npm ou yarn
 
-### Instalação
-1. Clone o repositório:
-```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
-cd seu-repositorio
-```
-
-2. Instale as dependências:
+Instale as dependências:
 ```bash
 npm install
 # ou
 yarn install
 ```
 
-### Execução
-##Ambiente de Desenvolvimento
 Para rodar a aplicação em modo de desenvolvimento:
 ```bash
 npm run dev
 # ou
 yarn dev
 ```
-A aplicação estará disponível em `http://localhost:3000`.
+A aplicação estará disponível em `http://localhost:3000`
 
 ## Build para Produção
 Para construir a aplicação para produção:
