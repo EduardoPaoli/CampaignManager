@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Table from "@/components/Table";
-import { deleteCampaign, getCampaign } from "../api/campaign";
+import { deleteCampaign, getCampaign } from "./api/campaign";
 import {
   CloseCircleOutlined,
   EditOutlined,
